@@ -7,8 +7,8 @@ import nl.tudelft.ewi.devhub.server.database.entities.Group;
 import java.util.List;
 
 /**
-* Created by jgmeligmeyling on 05/03/15.
-*/
+ * @author Jan-Willem Gmelig Meyling
+ */
 @Data
 public class AssignmentStats {
 

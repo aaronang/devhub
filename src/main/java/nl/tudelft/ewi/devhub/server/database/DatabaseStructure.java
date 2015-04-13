@@ -8,7 +8,6 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-import com.google.inject.persist.PersistService;
 import liquibase.Liquibase;
 import liquibase.database.jvm.JdbcConnection;
 import liquibase.exception.LiquibaseException;
@@ -24,7 +23,7 @@ public class DatabaseStructure {
 	private final Properties properties;
 
 	/**
-	 * This constructs a new {@link DatabaseStructure} using the specified {@link PersistService}.
+	 * This constructs a new {@link DatabaseStructure} using the specified {@code PersistService}.
 	 * 
 	 * @throws IOException
 	 *             In case the persistence configuration could not be loaded.
@@ -45,8 +44,8 @@ public class DatabaseStructure {
 				updateStructure();
 				break;
 			default:
-				throw new IllegalArgumentException("No \"liquibase.liquibase-strategy\" " +
-						"parameter specified in persistence configuration.");
+				throw new IllegalArgumentException("No \"liquibase.liquibase-strategy\" "
+						+ "parameter specified in persistence configuration.");
 		}
 	}
 

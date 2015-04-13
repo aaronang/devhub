@@ -14,7 +14,7 @@ public interface MailBackend {
 	
 	@Data
 	@ToString(exclude = { "content" })
-	public static class Mail {
+	class Mail {
 		private final String addressee;
 		private final String subject;
 		private final String content;

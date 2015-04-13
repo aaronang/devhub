@@ -1,9 +1,9 @@
 package nl.tudelft.ewi.devhub.server.database.controllers;
 
+import nl.tudelft.ewi.devhub.server.database.entities.CourseAssistant;
+
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-
-import nl.tudelft.ewi.devhub.server.database.entities.CourseAssistant;
 
 public class CourseAssistants extends Controller<CourseAssistant> {
 

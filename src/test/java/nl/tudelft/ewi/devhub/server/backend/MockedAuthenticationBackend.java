@@ -1,16 +1,14 @@
 package nl.tudelft.ewi.devhub.server.backend;
 
-import javax.persistence.EntityNotFoundException;
-
-import java.util.Map;
-
 import com.google.common.collect.Maps;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.google.inject.persist.Transactional;
-import nl.tudelft.ewi.devhub.server.backend.AuthenticationBackend;
 import nl.tudelft.ewi.devhub.server.database.controllers.Users;
 import nl.tudelft.ewi.devhub.server.database.entities.User;
+
+import javax.persistence.EntityNotFoundException;
+import java.util.Map;
 
 @Singleton
 public class MockedAuthenticationBackend implements AuthenticationBackend {

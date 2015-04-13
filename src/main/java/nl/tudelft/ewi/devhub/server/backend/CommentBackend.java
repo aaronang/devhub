@@ -20,7 +20,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Created by jgmeligmeyling on 05/03/15.
  * @author Jan-Willem Gmelig Meyling
  */
 @Slf4j

@@ -1,5 +1,16 @@
 package nl.tudelft.ewi.devhub.server.web.templating;
 
+import com.google.common.base.Charsets;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import freemarker.cache.FileTemplateLoader;
+import freemarker.template.Configuration;
+import freemarker.template.TemplateException;
+import freemarker.template.TemplateExceptionHandler;
+import lombok.SneakyThrows;
+
+import javax.inject.Inject;
+import javax.inject.Named;
 import java.io.File;
 import java.io.IOException;
 import java.io.Reader;
@@ -7,20 +18,6 @@ import java.io.StringWriter;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-
-import javax.inject.Inject;
-import javax.inject.Named;
-
-import lombok.SneakyThrows;
-
-import com.google.common.base.Charsets;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-
-import freemarker.cache.FileTemplateLoader;
-import freemarker.template.Configuration;
-import freemarker.template.TemplateException;
-import freemarker.template.TemplateExceptionHandler;
 
 public class TemplateEngine {
 
@@ -31,7 +28,7 @@ public class TemplateEngine {
 	@SneakyThrows
 	public TemplateEngine(@Named("directory.templates") final File templatesDirectory, TranslatorFactory translatorFactory) {
 		this.translatorFactory = translatorFactory;
-		this.conf = new Configuration() {
+		this.conf = new Configuration(Configuration.VERSION_2_3_0) {
 			{
 				setDirectoryForTemplateLoading(templatesDirectory);
 				setDefaultEncoding(Charsets.UTF_8.displayName());

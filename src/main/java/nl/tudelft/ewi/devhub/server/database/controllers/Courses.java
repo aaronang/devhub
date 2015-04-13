@@ -1,21 +1,19 @@
 package nl.tudelft.ewi.devhub.server.database.controllers;
 
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
-
-import java.util.Date;
-import java.util.List;
-
-import com.google.common.collect.ImmutableList;
-import nl.tudelft.ewi.devhub.server.database.entities.*;
-
 import com.google.common.base.Preconditions;
+import com.google.common.collect.ImmutableList;
 import com.google.inject.persist.Transactional;
 import com.mysema.query.jpa.impl.JPAQuery;
 import nl.tudelft.ewi.devhub.server.database.entities.Course;
 import nl.tudelft.ewi.devhub.server.database.entities.QCourse;
+import nl.tudelft.ewi.devhub.server.database.entities.QCourseAssistant;
 import nl.tudelft.ewi.devhub.server.database.entities.QGroupMembership;
 import nl.tudelft.ewi.devhub.server.database.entities.User;
+
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import java.util.Date;
+import java.util.List;
 
 public class Courses extends Controller<Course> {
 

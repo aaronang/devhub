@@ -1,13 +1,16 @@
 package nl.tudelft.ewi.devhub.server.database.controllers;
 
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
-
-import java.util.List;
-
 import com.google.common.base.Preconditions;
 import com.google.inject.persist.Transactional;
-import nl.tudelft.ewi.devhub.server.database.entities.*;
+import nl.tudelft.ewi.devhub.server.database.entities.Course;
+import nl.tudelft.ewi.devhub.server.database.entities.Group;
+import nl.tudelft.ewi.devhub.server.database.entities.GroupMembership;
+import nl.tudelft.ewi.devhub.server.database.entities.QGroupMembership;
+import nl.tudelft.ewi.devhub.server.database.entities.User;
+
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import java.util.List;
 
 public class GroupMemberships extends Controller<GroupMembership> {
 

@@ -25,7 +25,7 @@ import com.google.inject.persist.Transactional;
 import com.google.inject.persist.UnitOfWork;
 
 /**
- * The {@link BuildServerClient} allows you to query and manipulate data from the build-server.
+ * The {@link BuildsBackend} allows you to query and manipulate data from the build-server.
  */
 @Slf4j
 public class BuildsBackend {

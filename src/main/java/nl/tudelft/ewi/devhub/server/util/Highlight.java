@@ -28,7 +28,7 @@ public enum Highlight {
 	private final String className;
 	private final String[] fileTypes;
 
-	private Highlight(String className, String... fileTypes) {
+	Highlight(String className, String... fileTypes) {
 		this.fileTypes = fileTypes;
 		this.className = className;
 	}

@@ -1,20 +1,18 @@
 package nl.tudelft.ewi.devhub.server.backend;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
-
+import com.google.common.base.Preconditions;
+import com.google.inject.Inject;
 import nl.tudelft.ewi.devhub.server.backend.MailBackend.Mail;
 import nl.tudelft.ewi.devhub.server.database.entities.BuildResult;
 import nl.tudelft.ewi.devhub.server.database.entities.Group;
 import nl.tudelft.ewi.devhub.server.database.entities.User;
 import nl.tudelft.ewi.devhub.server.web.templating.Translator;
 import nl.tudelft.ewi.devhub.server.web.templating.TranslatorFactory;
-
 import org.apache.commons.lang.StringUtils;
 
-import com.google.common.base.Preconditions;
-import com.google.inject.Inject;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
 
 public class BuildResultMailer {
 

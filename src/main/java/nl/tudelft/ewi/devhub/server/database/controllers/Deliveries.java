@@ -1,9 +1,11 @@
 package nl.tudelft.ewi.devhub.server.database.controllers;
 
 import com.google.inject.Inject;
-import static com.mysema.query.group.GroupBy.*;
 import com.google.inject.persist.Transactional;
-import nl.tudelft.ewi.devhub.server.database.entities.*;
+import nl.tudelft.ewi.devhub.server.database.entities.Assignment;
+import nl.tudelft.ewi.devhub.server.database.entities.Delivery;
+import nl.tudelft.ewi.devhub.server.database.entities.Group;
+import nl.tudelft.ewi.devhub.server.database.entities.QDelivery;
 
 import javax.persistence.EntityManager;
 import java.util.Comparator;
@@ -11,8 +13,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import static com.mysema.query.group.GroupBy.groupBy;
+import static com.mysema.query.group.GroupBy.list;
+
 /**
- * Created by jgmeligmeyling on 04/03/15.
+ * @author Jan-Willem Gmelig Meyling
  */
 public class Deliveries extends Controller<Delivery> {
 

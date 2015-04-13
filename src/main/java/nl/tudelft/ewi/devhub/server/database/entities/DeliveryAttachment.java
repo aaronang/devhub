@@ -2,11 +2,16 @@ package nl.tudelft.ewi.devhub.server.database.entities;
 
 import lombok.Data;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import java.io.File;
 
 /**
- * Created by jgmeligmeyling on 04/03/15.
+ * @author Jan-Willem Gmelig Meyling
  */
 @Data
 @Entity

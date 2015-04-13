@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Created by jgmeligmeyling on 12/04/15.
+ * @author Jan-Willem Gmelig Meyling
  */
 public class CoursesBackend {
 
