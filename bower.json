@@ -1,0 +1,30 @@
+{
+  "name": "devhub",
+  "version": "1.0",
+  "homepage": "https://github.com/devhub-tud/devhub",
+  "authors": [
+    "Jan-Willem Gmelig Meyling <j.gmeligmeyling@student.tudelft.nl>"
+  ],
+  "description": "DevHub is a Continuous Integration system designed to give students a simple practical introduction into modern software development",
+  "keywords": [
+    "Continuous",
+    "Integration",
+    "git",
+    "maven",
+    "JUnit"
+  ],
+  "license": "Apache",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "bootstrap": "~3.3.4",
+    "octicons": "~2.2.2",
+    "highlightjs": "~8.5.0"
+  }
+}

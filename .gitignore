@@ -35,3 +35,7 @@ storage/
 
 # Devhub generated CSS file
 src/main/resources/static/css/devhub.css
+
+# Bower dependencies
+src/main/resources/static/vendor
+

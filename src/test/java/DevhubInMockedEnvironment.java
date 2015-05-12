@@ -6,6 +6,8 @@ import nl.tudelft.ewi.devhub.server.backend.MockedAuthenticationBackend;
 import nl.tudelft.ewi.devhub.server.backend.MockedMailBackend;
 
 import com.google.inject.AbstractModule;
+import nl.tudelft.ewi.git.client.GitServerClient;
+import nl.tudelft.ewi.git.client.GitServerClientMock;
 
 
 public class DevhubInMockedEnvironment {
@@ -14,6 +16,7 @@ public class DevhubInMockedEnvironment {
 		final DevhubServer server = new DevhubServer(new AbstractModule() {
 			@Override
 			protected void configure() {
+				bind(GitServerClient.class).toInstance(new GitServerClientMock());
 				bind(AuthenticationBackend.class).to(MockedAuthenticationBackend.class);
 				bind(MailBackend.class).to(MockedMailBackend.class);
 			}
