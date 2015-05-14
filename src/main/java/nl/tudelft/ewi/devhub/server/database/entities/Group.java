@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -24,20 +25,27 @@ import com.google.common.collect.Sets;
 @Data
 @Entity
 @Table(name = "groups")
-@EqualsAndHashCode(of = { "groupId" })
-@ToString(of = { "groupId" })
-public class Group implements Serializable {
+@IdClass(Group.GroupId.class)
+@ToString(of = { "course", "groupNumber" })
+@EqualsAndHashCode(of = { "course", "groupNumber" })
+public class Group {
+
+	@Data
+	@EqualsAndHashCode
+	public static class GroupId implements Serializable {
+
+		private Course course;
+		private Long groupNumber;
+
+	}
 
 	@Id
-	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long groupId;
-
 	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "course_id")
 	private Course course;
 
+	@Id
 	@NotNull
 	@Column(name = "group_number")
 	private Long groupNumber;

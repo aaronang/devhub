@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -36,7 +37,10 @@ public class BuildResult {
 
 	@NotNull
 	@ManyToOne
-	@JoinColumn(name = "repository_id")
+	@JoinColumns({
+		@JoinColumn(name = "course_id", referencedColumnName = "course_id", insertable = false, updatable = false),
+		@JoinColumn(name = "group_number", referencedColumnName = "group_number", insertable = false, updatable = false)
+	})
 	private Group repository;
 
 	@NotEmpty

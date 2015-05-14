@@ -90,7 +90,7 @@ public class ProjectsBackend {
 		for (GroupMembership membership : memberships) {
 			groupMemberships.delete(membership);
 		}
-		groups.delete(groups.find(group.getGroupId()));
+		groups.delete(groups.delete(group));
 	}
 
 	@Transactional

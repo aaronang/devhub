@@ -62,7 +62,6 @@ public class GroupsTest {
 		
 		Group otherGroup = new Group();
 		otherGroup.setCourse(group.getCourse());
-		otherGroup.setGroupId(group.getGroupId());
 		otherGroup.setGroupNumber(random.nextLong());
 		otherGroup.setRepositoryName(String.format("courses/%s/group-%s",
 				group.getGroupNumber(), group.getCourse().getName()));
@@ -111,7 +110,7 @@ public class GroupsTest {
 	public void testFindById() {
 		Group group = createGroup();
 		groups.persist(group);
-		assertEquals(group, groups.find(group.getGroupId()));
+		assertEquals(group, groups.find(group.getCourse(), group.getGroupNumber()));
 	}
 	
 	@Test

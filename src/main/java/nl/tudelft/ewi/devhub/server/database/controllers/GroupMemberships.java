@@ -31,7 +31,7 @@ public class GroupMemberships extends Controller<GroupMembership> {
 	public List<GroupMembership> ofGroup(Group group) {
 		Preconditions.checkNotNull(group);
 		return query().from(QGroupMembership.groupMembership)
-			.where(QGroupMembership.groupMembership.group.groupId.eq(group.getGroupId()))
+			.where(QGroupMembership.groupMembership.group.eq(group))
 			.list(QGroupMembership.groupMembership);
 	}
 

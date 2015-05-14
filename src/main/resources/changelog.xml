@@ -424,4 +424,67 @@
 		</addColumn>
 	</changeSet>
 
+	<changeSet id="unique_course_memberships" author="Jan-Willem Gmelig Meyling">
+		<addColumn tableName="group_memberships">
+			<column name="course_id" type="bigint"/>
+			<column name="group_number" type="bigint"/>
+		</addColumn>
+
+		<addColumn tableName="assignment_deliveries">
+			<column name="group_number" type="bigint"></column>
+		</addColumn>
+
+		<addColumn tableName="build_results">
+			<column name="course_id" type="bigint"/>
+			<column name="group_number" type="bigint"/>
+		</addColumn>
+
+		<sql>
+			update group_memberships set course_id = (
+				select course_id from groups where groups.id = group_memberships.group_id
+			);
+			update group_memberships set group_number = (
+				select group_number from groups where groups.id = group_memberships.group_id
+			);
+			update assignment_deliveries set group_number = (
+				select group_number from groups where groups.id = assignment_deliveries.group_id
+			);
+			update build_results set course_id = (
+				select course_id from groups where groups.id = build_results.repository_id
+			);
+			update build_results set group_number = (
+				select group_number from groups where groups.id = build_results.repository_id
+			);
+		</sql>
+
+		<addForeignKeyConstraint constraintName="group_memberships_group_exists"
+				 baseTableName="group_memberships" baseColumnNames="course_id,group_number"
+				 referencedTableName="groups" referencedColumnNames="course_id, group_number"/>
+		<addNotNullConstraint tableName="group_memberships" columnName="course_id" columnDataType="bigint"/>
+		<addNotNullConstraint tableName="group_memberships" columnName="group_number" columnDataType="bigint"/>
+		<dropForeignKeyConstraint baseTableName="group_memberships" constraintName="group_ref_in_groupmemberships"/>
+		<dropPrimaryKey tableName="group_memberships"/>
+		<dropColumn tableName="group_memberships" columnName="group_id"/>
+		<addPrimaryKey tableName="group_memberships" columnNames="course_id,user_id"/>
+
+		<dropForeignKeyConstraint baseTableName="assignment_deliveries" constraintName="assignment_deliveries_group"/>
+		<dropColumn tableName="assignment_deliveries" columnName="group_id"/>
+		<addForeignKeyConstraint constraintName="assignment_deliveries_group"
+			 baseTableName="assignment_deliveries" baseColumnNames="course_id, group_number"
+			 referencedTableName="groups" referencedColumnNames="course_id, group_number" />
+
+		<dropForeignKeyConstraint baseTableName="build_results" constraintName="repository_ref_in_build_results"/>
+		<addForeignKeyConstraint constraintName="build_results_group_exists"
+			 baseTableName="build_results" baseColumnNames="course_id,group_number"
+			 referencedTableName="groups" referencedColumnNames="course_id, group_number"/>
+
+		<dropUniqueConstraint tableName="build_results" constraintName="build_results_repository_id_commit_id_key"/>
+		<dropColumn tableName="build_results" columnName="repository_id" />
+		<modifySql dbms="h2">
+			<replace replace="build_results_repository_id_commit_id_key" with="PUBLIC.CONSTRAINT_6"/>
+		</modifySql>
+	</changeSet>
+
+
+
 </databaseChangeLog>

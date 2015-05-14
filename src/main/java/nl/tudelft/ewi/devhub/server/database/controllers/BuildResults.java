@@ -23,7 +23,7 @@ public class BuildResults extends Controller<BuildResult> {
 		Preconditions.checkNotNull(commitId);
 		
 		BuildResult result = query().from(QBuildResult.buildResult)
-				.where(QBuildResult.buildResult.repository.groupId.eq(group.getGroupId()))
+				.where(QBuildResult.buildResult.repository.eq(group))
 				.where(QBuildResult.buildResult.commitId.equalsIgnoreCase(commitId))
 				.singleResult(QBuildResult.buildResult);
 		

@@ -2,6 +2,9 @@ package nl.tudelft.ewi.devhub.server.database.entities;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.hibernate.annotations.JoinColumnOrFormula;
+import org.hibernate.annotations.JoinColumnsOrFormulas;
+import org.hibernate.annotations.JoinFormula;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -65,8 +68,16 @@ public class Delivery implements Comparable<Delivery> {
     })
     private Assignment assignment;
 
+    /*
+     * Sadly @JoinColumns doesn't support overlapping parts for ORM v3 and v4
+     * see : http://stackoverflow.com/a/9567902/2104280
+     * and : https://hibernate.atlassian.net/browse/HHH-6221
+     */
     @ManyToOne
-    @JoinColumn(name = "group_id")
+    @JoinColumnsOrFormulas({
+        @JoinColumnOrFormula(formula = @JoinFormula(value = "course_id", referencedColumnName = "course_id")),
+        @JoinColumnOrFormula(column = @JoinColumn(name = "group_number", referencedColumnName = "group_number"))
+    })
     private Group group;
 
     @Column(name = "commit_id")
